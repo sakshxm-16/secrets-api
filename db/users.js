@@ -1,6 +1,7 @@
 var records = [];
+const users = {};
 
-exports.findByToken = function (token, cb) {
+users.findByToken = function (token, cb) {
   process.nextTick(function () {
     for (var i = 0, len = records.length; i < len; i++) {
       var record = records[i];
@@ -13,7 +14,7 @@ exports.findByToken = function (token, cb) {
   });
 };
 
-exports.addRecord = function (username, token) {
+users.addRecord = function (username, token) {
   records.push({
     username: username,
     token: token,
@@ -21,7 +22,7 @@ exports.addRecord = function (username, token) {
   });
 };
 
-exports.addSecret = function (username, secret) {
+users.addSecret = function (username, secret) {
   for (var i = 0, len = records.length; i < len; i++) {
     var record = records[i];
     if (record.username === username) {
@@ -30,7 +31,7 @@ exports.addSecret = function (username, secret) {
   }
 };
 
-exports.updateRecord = function (username, id, newData) {
+users.updateRecord = function (username, id, newData) {
   for (var i = 0, len = records.length; i < len; i++) {
     const record = records[i];
 
@@ -52,7 +53,7 @@ exports.updateRecord = function (username, id, newData) {
   return false;
 };
 
-exports.checkAlreadyHasToken = function (username) {
+users.checkAlreadyHasToken = function (username) {
   for (var i = 0, len = records.length; i < len; i++) {
     var record = records[i];
 
@@ -64,7 +65,7 @@ exports.checkAlreadyHasToken = function (username) {
   }
 };
 
-exports.getSecrets = function (username) {
+users.getSecrets = function (username) {
   for (var i = 0, len = records.length; i < len; i++) {
     var record = records[i];
 
@@ -74,7 +75,7 @@ exports.getSecrets = function (username) {
   }
 };
 
-exports.getSecretById = function (username, id) {
+users.getSecretById = function (username, id) {
   for (var i = 0, len = records.length; i < len; i++) {
     var record = records[i];
     if (record.username === username) {
@@ -89,7 +90,7 @@ exports.getSecretById = function (username, id) {
   return false;
 };
 
-exports.deleteSecretWithId = function (username, id) {
+users.deleteSecretWithId = function (username, id) {
   for (var i = 0, len = records.length; i < len; i++) {
     var record = records[i];
     if (record.username === username) {
@@ -109,6 +110,8 @@ exports.deleteSecretWithId = function (username, id) {
   return false;
 };
 
-exports.deleteRecords = function () {
+users.deleteRecords = function () {
   records = [];
 };
+
+export default users;

@@ -1,13 +1,18 @@
-const express = require("express");
-const limit = require("express-rate-limit");
-const bodyParser = require("body-parser");
-const store = require("node-localstorage");
-const expressBasicAuth = require("express-basic-auth");
-const crypto = require("crypto");
-const passport = require("passport");
-const Strategy = require("passport-http-bearer").Strategy;
-const db = require("./db");
+import express from "express";
+import { rateLimit } from "express-rate-limit";
+import bodyParser from "body-parser";
+import store from "node-localstorage";
+import expressBasicAuth from "express-basic-auth";
+import { randomUUID } from "node:crypto";
+import passport from "passport";
+import bearer from "passport-http-bearer";
+import ejs from "ejs";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import db from "./db/index.js";
 
+const Strategy = bearer.Strategy;
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const localStorage = new store.LocalStorage("./scratch");
 const app = express();
 let functionalData = [];
@@ -60,7 +65,7 @@ passport.use(
   })
 );
 
-const limiter = limit.rateLimit({
+const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
@@ -72,7 +77,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "html");
 app.set("views", __dirname + "/views");
-app.engine("html", require("ejs").renderFile);
+app.engine("html", ejs.renderFile);
 
 let data = {
   secrets: [
@@ -510,7 +515,7 @@ app.post("/register", (req, res) => {
 
 //Get API Key
 app.get("/generate-api-key", async (req, res) => {
-  const token = crypto.randomUUID();
+  const token = randomUUID();
   // localStorage.clear();
   let keys = JSON.parse(localStorage.getItem("apiKeys")) || [];
   keys.push(token);
@@ -533,7 +538,7 @@ app.post("/get-auth-token", (req, res) => {
   }
 
   if (localStorage.getItem(username) === password) {
-    const token = crypto.randomUUID();
+    const token = randomUUID();
     db.users.addRecord(username, token);
     res.status(200).json({ token: token });
   } else {

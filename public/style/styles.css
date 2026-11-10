@@ -1,0 +1,196 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #666;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+
+code {
+    font-family: Consolas, monospace;
+    font-size: 14px;
+}
+
+.endpoint {
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.endpoint h2 {
+    margin-bottom: 5px;
+    color: #FF7F50;
+}
+
+a {
+    color: #FF7F50;
+}
+
+.endpoint p {
+    color: #888;
+}
+
+.example {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.get-method {
+    color: #228B22;
+}
+
+.request {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.response {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.copyright {
+    display: inline-block;
+}
+
+.right {
+    float: right;
+}
+
+#toggle-dark-mode {
+    float: right;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+body.dark-mode {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #333;
+    color: #f2f2f2;
+
+    h1 {
+        color: white;
+    }
+
+    h2 {
+        color: #666;
+    }
+
+    pre {
+        background-color: #888;
+        padding: 10px;
+    }
+
+    code {
+        font-family: Consolas, monospace;
+        font-size: 14px;
+        color: black;
+    }
+
+    .endpoint {
+        margin-bottom: 20px;
+        background-color: #666;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .endpoint h2 {
+        margin-bottom: 5px;
+        color: #6e12a0;
+    }
+
+    a {
+        color: #6e12a0;
+    }
+
+    .endpoint p {
+        color: white;
+    }
+
+    .example {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .get-method {
+        color: #c30000;
+    }
+
+    .request {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: #666;
+        color: black;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .response {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: #888;
+        color: black;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .copyright {
+        display: inline-block;
+    }
+
+    .right {
+        float: right;
+    }
+
+    #toggle-dark-mode {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 10px 20px;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}

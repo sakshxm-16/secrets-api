@@ -17,6 +17,8 @@ const localStorage = new store.LocalStorage("./scratch");
 const app = express();
 let functionalData = [];
 
+app.use(express.static(__dirname + "/public"));
+
 //Auth methods
 const basicAuth = expressBasicAuth({
   authorizer: authenticate,
@@ -739,7 +741,8 @@ app.delete(
   }
 );
 
-const port = 4000;
+const port = process.env.PORT || 4000;
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
